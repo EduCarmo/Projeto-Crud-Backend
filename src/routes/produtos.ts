@@ -21,4 +21,17 @@ router.get("/:codigo", (req, res) => {
     res.status(200).send(produto);
 })
 
+router.put("/:codigo", (req, res) => {
+    const { codigo } = req.params;
+    const { nome, preco } = req.body;
+    repo.alterarPorCodigo(codigo, nome, preco)
+    res.status(200).send();
+})
+
+router.delete("/:codigo", (req, res) => {
+    const { codigo } = req.params;
+    repo.deletarPorCodigo(codigo)
+    res.status(200).send();
+})
+
 export default router;
